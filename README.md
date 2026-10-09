@@ -1,0 +1,1 @@
+# nextzy-point-collecting-game
