@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+  // moduleFormat = "cjs"   // uncomment ONLY if package.json has no "type": "module"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Player {
+  id        String        @id @default(uuid()) @db.Uuid
+  score     Int           @default(0)
+  createdAt DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime      @updatedAt @map("updated_at") @db.Timestamptz(3)
+  plays     PlayHistory[]
+  claims    RewardClaim[]
+
+  @@map("players")
+}
+
+model Checkpoint {
+  id         Int           @id
+  threshold  Int           @unique
+  rewardName String        @map("reward_name")
+  claims     RewardClaim[]
+
+  @@map("checkpoints")
+}
+
+model PlayHistory {
+  id        String   @id @default(uuid()) @db.Uuid
+  playerId  String   @map("player_id") @db.Uuid
+  points    Int
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  player    Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@index([playerId, createdAt])
+  @@map("play_histories")
+}
+
+model RewardClaim {
+  id           String     @id @default(uuid()) @db.Uuid
+  playerId     String     @map("player_id") @db.Uuid
+  checkpointId Int        @map("checkpoint_id")
+  claimedAt    DateTime   @default(now()) @map("claimed_at") @db.Timestamptz(3)
+  player       Player     @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  checkpoint   Checkpoint @relation(fields: [checkpointId], references: [id])
+
+  @@unique([playerId, checkpointId])
+  @@map("reward_claims")
+}
