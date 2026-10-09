@@ -1,4 +1,41 @@
+# This root .gitignore covers patterns shared by the whole repo
+# (frontend/ and backend/ each have their own .gitignore for stack-specific rules).
+
+# dependencies
 node_modules/
+.pnp/
+.pnp.*
+
+# environment variables
 .env
-.env*.local
+.env.local
+.env.*.local
+!.env.example
+!.env.*.example
+
+# logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# editor/IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# vercel
 .vercel/
+
+# misc
+*.tsbuildinfo
+*.tgz
+.turbo/
