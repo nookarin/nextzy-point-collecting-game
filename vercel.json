@@ -8,7 +8,7 @@
       "root": "backend/",
       "framework": "nestjs",
       "entrypoint": "src/main.ts",
-      "outputDirectory": "."
+      "outputDirectory": "bundle"
     }
   },
   "rewrites": [
