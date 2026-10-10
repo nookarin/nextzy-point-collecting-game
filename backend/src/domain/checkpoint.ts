@@ -1,4 +1,5 @@
-export type CheckpointStatus = 'locked' | 'claimable' | 'claimed';
+export const CHECKPOINT_STATUSES = ['locked', 'claimable', 'claimed'] as const;
+export type CheckpointStatus = (typeof CHECKPOINT_STATUSES)[number];
 
 export function getCheckpointStatus(
   score: number,
