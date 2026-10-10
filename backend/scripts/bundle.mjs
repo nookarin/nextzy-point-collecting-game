@@ -7,6 +7,7 @@ await build({
   entryPoints: ['dist/main.js'],
   outfile: `${OUT_DIR}/main.js`,
   bundle: true,
+  keepNames: true,
   platform: 'node',
   format: 'esm',
   target: 'node22',
