@@ -2,13 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   async rewrites() {
-    if (process.env.NODE_ENV !== 'development') return [];
-    return [{ source: '/api/:path*', destination: 'http://localhost:4000/api/:path*' }];
+    const backendUrl = process.env.BACKEND_URL ?? "http://localhost:4000";
+    return [{ source: "/api/:path*", destination: `${backendUrl}/api/:path*` }];
   },
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
-  
+
   turbopack: {
     rules: {
       "*.css": {
