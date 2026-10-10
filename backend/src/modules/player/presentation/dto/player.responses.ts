@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { CHECKPOINT_STATUSES, CheckpointStatus } from '../../../../domain/checkpoint.js';
+import { CHECKPOINT_STATUSES } from '../../../../domain/checkpoint.js';
+import type { CheckpointStatus } from '../../../../domain/checkpoint.js';
 
 export class CheckpointResponse {
   @ApiProperty({ example: 1 })

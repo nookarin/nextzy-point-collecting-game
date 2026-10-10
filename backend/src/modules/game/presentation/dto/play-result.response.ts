@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { POINT_OPTIONS, PointOption } from '../../../../domain/score.js';
+import { POINT_OPTIONS } from '../../../../domain/score.js';
+import type { PointOption } from '../../../../domain/score.js';
 
 export class PlayResultResponse {
   @ApiProperty({ enum: POINT_OPTIONS, example: 1000, description: 'Points won this round' })
