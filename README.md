@@ -7,3 +7,6 @@ npx create-next-app@latest frontend --typescript --tailwind --eslint --app --src
 
 # Backend (--skip-git stops Nest from creating a second git repo)
 npx @nestjs/cli new backend --skip-git --package-manager npm
+
+# api doc
+https://zrtxkfa0b3.apidog.io
