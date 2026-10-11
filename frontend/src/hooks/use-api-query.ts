@@ -48,3 +48,5 @@ export function useApiQuery<T>(fetcher: () => Promise<T>) {
     refetch,
   };
 }
+
+export type ApiQuery<T> = ReturnType<typeof useApiQuery<T>>;
