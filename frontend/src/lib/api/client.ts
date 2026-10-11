@@ -35,3 +35,8 @@ export async function apiRequest<T>(path: string, init: RequestInit = {}): Promi
   if (response.status === 204) return undefined as T;
   return (await response.json()) as T;
 }
+
+export function toApiError(error: unknown): ApiError {
+  if (error instanceof ApiError) return error;
+  return new ApiError(0, "UnknownError", "Unexpected error");
+}
