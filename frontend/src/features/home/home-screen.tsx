@@ -54,7 +54,7 @@ export function HomeScreen() {
       <Modal
         open={claimedRewardName !== undefined}
         onClose={() => setClaimedRewardName(undefined)}
-        icon={<CrownCoinIcon className="size-16" />}
+        icon={<CrownCoinIcon size={64} />}
         title="ยินดีด้วย"
         message={`คุณได้รับ${claimedRewardName ?? ""}`}
       />

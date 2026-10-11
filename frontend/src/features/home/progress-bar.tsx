@@ -56,7 +56,7 @@ export function ProgressBar({ score, maxScore, checkpoints }: ProgressBarProps) 
             style={{ left: position(checkpoint.threshold) }}
           >
             {checkpoint.threshold === maxScore ? (
-              <CrownCoinIcon className="size-6" />
+              <CrownCoinIcon size={24} />
             ) : (
               <span
                 className={cn(
