@@ -10,6 +10,7 @@
 
 ## Links
 
+| | |
 |---|---|
 | **Live app** | https://nextzy-point-collecting-game.vercel.app |
 | **API documentation (Apidog, with "Try it out")** | https://zrtxkfa0b3.apidog.io |
@@ -195,6 +196,7 @@ Error ทุกตัวมีรูปแบบเดียวกัน: `{ "st
 
 ## Performance
 
+| | |
 |---|---|
 | **PageSpeed Result** | https://pagespeed.web.dev/analysis/https-nextzy-point-collecting-game-vercel-app/m1jk6s0b73?form_factor=mobile |
 
