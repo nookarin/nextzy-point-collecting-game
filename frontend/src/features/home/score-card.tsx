@@ -16,7 +16,7 @@ export function ScoreCard({ status, onClaim, isClaiming }: ScoreCardProps) {
   return (
     <div className={CARD}>
       <span className="absolute -left-[3px] top-[15px] grid h-[22px] w-[70px] place-items-center rounded-tl-[4px] rounded-r-full bg-brand-tag text-[10px] leading-none text-white">
-        {/* tag text from Figma */}
+        แชร์รางวัล
       </span>
 
       <div className="absolute right-[15px] top-[26px] text-right text-ink">
