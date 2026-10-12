@@ -28,48 +28,47 @@ export function GameScreen() {
   }
 
   return (
-    <>
-      <main className="flex flex-1 flex-col bg-linear-to-b from-cream-from to-cream-to px-4">
-        <header className="pt-10 text-center">
-          {status.isLoading && <Skeleton className="mx-auto h-7 w-56" />}
-          {status.error && !status.data && (
-            <ErrorState message={getErrorMessage(status.error)} onRetry={status.refetch} />
-          )}
-          {status.data && score !== undefined && (
-            <h1 className="text-lg font-semibold">
-              คะแนนสะสม {formatNumber(score)}/{formatNumber(status.data.maxScore)}
-            </h1>
-          )}
-        </header>
+  <div className="flex flex-1 flex-col bg-linear-to-b from-white to-[#ffe8ce]">
+    <main className="flex flex-1 flex-col items-center px-2">
+      <header className="w-full pt-[52px] text-center">
+        {status.isLoading && <Skeleton className="mx-auto h-6 w-64" />}
+        {status.error && !status.data && (
+          <ErrorState message={getErrorMessage(status.error)} onRetry={status.refetch} />
+        )}
+        {status.data && score !== undefined && (
+          <h1 className="text-[24px] font-semibold leading-none text-ink">
+            คะแนนสะสม {formatNumber(score)}/{formatNumber(status.data.maxScore)}
+          </h1>
+        )}
+      </header>
 
-        <div className="flex flex-1 flex-col items-center justify-center gap-10 pb-10">
-          <ul className="flex w-full gap-1.5" aria-label="คะแนนที่สุ่มได้">
-            {POINT_OPTIONS.map((points) => (
-              <PointOption
-                key={points}
-                points={points}
-                state={optionState(points)}
-                isPulsing={round.isWaitingForServer}
-              />
-            ))}
-          </ul>
+      <ul className="mt-[197px] flex w-full gap-2" aria-label="คะแนนที่สุ่มได้">
+        {POINT_OPTIONS.map((points) => (
+          <PointOption
+            key={points}
+            points={points}
+            state={optionState(points)}
+            isPulsing={round.isWaitingForServer}
+          />
+        ))}
+      </ul>
 
-          <PillButton
-            variant="red"
-            onClick={round.start}
-            disabled={round.phase !== "idle" || !status.data}
-            className={cn(round.phase === "finished" && "invisible")}
-          >
-            สุ่มคะแนน
-          </PillButton>
-        </div>
-      </main>
+      <PillButton
+        variant="red"
+        size="game"
+        onClick={round.start}
+        disabled={round.phase !== "idle" || !status.data}
+        className={cn("mt-[70px]", round.phase === "finished" && "invisible")}
+      >
+        สุ่มคะแนน
+      </PillButton>
+    </main>
 
-      <BottomActionBar>
-        <Link href="/" className={pillClasses("yellow", "lg")}>
-          กลับหน้าหลัก
-        </Link>
-      </BottomActionBar>
+    <BottomActionBar>
+      <Link href="/" className={pillClasses("yellow", "lg")}>
+        กลับหน้าหลัก
+      </Link>
+    </BottomActionBar>
 
       <Modal
         open={round.phase === "finished"}
@@ -84,6 +83,6 @@ export function GameScreen() {
         title="เล่นไม่สำเร็จ"
         message={round.playError ? getErrorMessage(round.playError) : ""}
       />
-    </>
+    </div>
   );
 }

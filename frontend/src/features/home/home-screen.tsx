@@ -13,7 +13,8 @@ import { ScoreCard, ScoreCardSkeleton } from "./score-card";
 import { useHomeData } from "./use-home-data";
 
 export function HomeScreen() {
-  const { status, plays, rewards, claim, reset, claimReward, resetProgress } = useHomeData();
+  const { status, plays, rewards, claim, reset, claimReward, resetProgress } =
+    useHomeData();
   const [claimedRewardName, setClaimedRewardName] = useState<string>();
 
   async function handleClaim(checkpointId: number) {
@@ -24,20 +25,32 @@ export function HomeScreen() {
   return (
     <>
       <main className="flex flex-1 flex-col">
-        <section className="bg-neutral-200 p-3">
+        <section className="h-[228px] bg-band px-4 pt-[15px]">
           {status.isLoading && <ScoreCardSkeleton />}
           {status.error && !status.data && (
-            <div className="rounded-2xl bg-white">
-              <ErrorState message={getErrorMessage(status.error)} onRetry={status.refetch} />
+            <div className="rounded-[16px] bg-white">
+              <ErrorState
+                message={getErrorMessage(status.error)}
+                onRetry={status.refetch}
+              />
             </div>
           )}
           {status.data && (
-            <ScoreCard status={status.data} onClaim={handleClaim} isClaiming={claim.isPending} />
+            <ScoreCard
+              status={status.data}
+              onClaim={handleClaim}
+              isClaiming={claim.isPending}
+            />
           )}
         </section>
 
-        <div className="flex justify-center py-4">
-          <PillButton variant="blue" onClick={resetProgress} disabled={reset.isPending}>
+        <div className="flex justify-center pb-[29px] pt-[22px]">
+          <PillButton
+            variant="blue"
+            size="reset"
+            onClick={resetProgress}
+            disabled={reset.isPending}
+          >
             RESET
           </PillButton>
         </div>

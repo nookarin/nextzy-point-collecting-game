@@ -28,7 +28,11 @@ export function HistoryTabs({ plays, rewards }: HistoryTabsProps) {
 
   return (
     <section>
-      <div role="tablist" aria-label="ประวัติ" className="flex gap-1.5 px-3 pb-2">
+      <div
+        role="tablist"
+        aria-label="ประวัติ"
+        className="flex gap-[5px] px-[11px] pb-[9px]"
+      >
         {TABS.map((tab) => {
           const isActive = tab.key === activeTab;
           return (
@@ -41,8 +45,10 @@ export function HistoryTabs({ plays, rewards }: HistoryTabsProps) {
               aria-controls={`${baseId}-panel-${tab.key}`}
               onClick={() => setActiveTab(tab.key)}
               className={cn(
-                "h-7 rounded-full border px-3 text-xs transition",
-                isActive ? "border-brand-red text-brand-red" : "border-neutral-300 text-muted",
+                "h-[32px] w-[90px] rounded-full border text-[12px] leading-none",
+                isActive
+                  ? "border-brand-tab text-brand-tab"
+                  : "border-muted text-muted",
               )}
             >
               {tab.label}
@@ -95,7 +101,11 @@ interface HistoryPanelProps<T> {
   renderItem: (item: T) => ReactNode;
 }
 
-function HistoryPanel<T>({ query, emptyMessage, renderItem }: HistoryPanelProps<T>) {
+function HistoryPanel<T>({
+  query,
+  emptyMessage,
+  renderItem,
+}: HistoryPanelProps<T>) {
   if (query.isLoading) {
     return (
       <ul aria-busy="true">
@@ -107,7 +117,12 @@ function HistoryPanel<T>({ query, emptyMessage, renderItem }: HistoryPanelProps<
   }
 
   if (query.error && !query.data) {
-    return <ErrorState message={getErrorMessage(query.error)} onRetry={query.refetch} />;
+    return (
+      <ErrorState
+        message={getErrorMessage(query.error)}
+        onRetry={query.refetch}
+      />
+    );
   }
 
   if (!query.data || query.data.length === 0) {

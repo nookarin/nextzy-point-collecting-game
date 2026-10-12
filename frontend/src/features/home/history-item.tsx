@@ -7,19 +7,18 @@ interface HistoryItemProps {
   subtitle: string;
 }
 
+const AVATAR = {
+  play: "bg-linear-to-b from-brand-red to-red-900",
+  reward: "bg-[linear-gradient(180deg,#091050_0%,#5d1cf4_64.58%)]",
+} as const;
+
 export function HistoryItem({ variant, title, subtitle }: HistoryItemProps) {
   return (
-    <li className="flex items-center gap-3 border-b border-neutral-100 px-4 py-3">
-      <span
-        aria-hidden
-        className={cn(
-          "size-9 shrink-0 rounded-full bg-linear-to-b",
-          variant === "play" ? "from-brand-red to-red-900" : "from-indigo-500 to-violet-900",
-        )}
-      />
+    <li className="flex h-[82px] items-center gap-[22px] border-b border-divider pl-[25px] pr-4">
+      <span aria-hidden className={cn("size-12 shrink-0 rounded-full", AVATAR[variant])} />
       <div className="min-w-0">
-        <p className="truncate text-sm font-semibold">{title}</p>
-        <p className="text-xs text-muted">{subtitle}</p>
+        <p className="truncate text-[15px] font-semibold leading-none text-strong">{title}</p>
+        <p className="mt-[10px] text-[12px] leading-none text-subtle">{subtitle}</p>
       </div>
     </li>
   );
@@ -27,11 +26,11 @@ export function HistoryItem({ variant, title, subtitle }: HistoryItemProps) {
 
 export function HistoryItemSkeleton() {
   return (
-    <li className="flex items-center gap-3 border-b border-neutral-100 px-4 py-3">
-      <Skeleton className="size-9 shrink-0 rounded-full" />
-      <div className="flex flex-col gap-1.5">
-        <Skeleton className="h-3.5 w-32" />
-        <Skeleton className="h-3 w-24" />
+    <li className="flex h-[82px] items-center gap-[22px] border-b border-divider pl-[25px] pr-4">
+      <Skeleton className="size-12 shrink-0 rounded-full" />
+      <div className="flex flex-col gap-[10px]">
+        <Skeleton className="h-[15px] w-32" />
+        <Skeleton className="h-3 w-40" />
       </div>
     </li>
   );

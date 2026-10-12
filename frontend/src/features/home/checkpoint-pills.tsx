@@ -9,11 +9,11 @@ interface CheckpointPillsProps {
 
 export function CheckpointPills({ checkpoints, onClaim, isClaiming }: CheckpointPillsProps) {
   return (
-    <div className="mt-1 flex flex-wrap justify-end gap-1.5">
+    <div className="absolute bottom-[14px] right-[8px] flex gap-[10px]">
       {checkpoints.map((checkpoint) => {
         if (checkpoint.status === "claimed") {
           return (
-            <span key={checkpoint.id} className={pillClasses("soft", "sm")}>
+            <span key={checkpoint.id} className={pillClasses("claimed", "sm")}>
               ได้รับ{checkpoint.rewardName} แล้ว
             </span>
           );
@@ -24,7 +24,7 @@ export function CheckpointPills({ checkpoints, onClaim, isClaiming }: Checkpoint
           <PillButton
             key={checkpoint.id}
             size="sm"
-            variant={isLocked ? "muted" : "red"}
+            variant={isLocked ? "locked" : "claim"}
             disabled={isLocked || isClaiming}
             onClick={() => onClaim(checkpoint.id)}
           >

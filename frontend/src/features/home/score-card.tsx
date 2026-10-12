@@ -4,7 +4,7 @@ import { formatNumber } from "@/lib/format";
 import { CheckpointPills } from "./checkpoint-pills";
 import { ProgressBar } from "./progress-bar";
 
-const CARD = "rounded-2xl border-2 border-ink bg-white px-3 pb-3 pt-4";
+const CARD = "relative h-[200px] rounded-[16px] border border-black bg-white";
 
 interface ScoreCardProps {
   status: PlayerStatus;
@@ -15,15 +15,31 @@ interface ScoreCardProps {
 export function ScoreCard({ status, onClaim, isClaiming }: ScoreCardProps) {
   return (
     <div className={CARD}>
-      <div className="text-right">
-        <h1 className="text-base font-semibold">สะสมคะแนน</h1>
-        <p className="text-xs">คะแนนครบ {formatNumber(status.maxScore)} รับรางวัลใหญ่</p>
-        <p className="text-2xl font-semibold text-brand-red">
-          {formatNumber(status.score)}/{formatNumber(status.maxScore)}
+      <span className="absolute -left-[3px] top-[15px] grid h-[22px] w-[70px] place-items-center rounded-tl-[4px] rounded-r-full bg-brand-tag text-[10px] leading-none text-white">
+        {/* tag text from Figma */}
+      </span>
+
+      <div className="absolute right-[15px] top-[26px] text-right text-ink">
+        <h1 className="text-[16px] font-semibold leading-none">สะสมคะแนน</h1>
+        <p className="mt-[6px] text-[12px] leading-none">
+          คะแนนครบ {formatNumber(status.maxScore)} รับรางวัลใหญ่
         </p>
       </div>
-      <ProgressBar score={status.score} maxScore={status.maxScore} checkpoints={status.checkpoints} />
-      <CheckpointPills checkpoints={status.checkpoints} onClaim={onClaim} isClaiming={isClaiming} />
+
+      <p className="absolute right-[11px] top-[68px] text-[24px] font-semibold leading-none text-brand-red">
+        {formatNumber(status.score)}/{formatNumber(status.maxScore)}
+      </p>
+
+      <ProgressBar
+        score={status.score}
+        maxScore={status.maxScore}
+        checkpoints={status.checkpoints}
+      />
+      <CheckpointPills
+        checkpoints={status.checkpoints}
+        onClaim={onClaim}
+        isClaiming={isClaiming}
+      />
     </div>
   );
 }
@@ -31,16 +47,16 @@ export function ScoreCard({ status, onClaim, isClaiming }: ScoreCardProps) {
 export function ScoreCardSkeleton() {
   return (
     <div className={CARD} aria-busy="true" aria-label="กำลังโหลดคะแนน">
-      <div className="flex flex-col items-end gap-1.5">
-        <Skeleton className="h-4 w-20" />
-        <Skeleton className="h-3 w-40" />
-        <Skeleton className="h-7 w-36" />
+      <div className="absolute right-[15px] top-[26px] flex flex-col items-end gap-[6px]">
+        <Skeleton className="h-4 w-24" />
+        <Skeleton className="h-3 w-44" />
       </div>
-      <Skeleton className="mt-6 h-2 w-full rounded-full" />
-      <div className="mt-4 flex justify-end gap-1.5">
-        <Skeleton className="h-6 w-20 rounded-full" />
-        <Skeleton className="h-6 w-20 rounded-full" />
-        <Skeleton className="h-6 w-20 rounded-full" />
+      <Skeleton className="absolute right-[11px] top-[68px] h-6 w-36" />
+      <Skeleton className="absolute left-[18px] right-[31px] top-[136px] h-[9px] rounded-full" />
+      <div className="absolute bottom-[14px] right-[8px] flex gap-[10px]">
+        <Skeleton className="h-[20px] w-[60px] rounded-full" />
+        <Skeleton className="h-[20px] w-[60px] rounded-full" />
+        <Skeleton className="h-[20px] w-[60px] rounded-full" />
       </div>
     </div>
   );

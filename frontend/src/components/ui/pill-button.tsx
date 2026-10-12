@@ -2,23 +2,26 @@ import type { ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/cn";
 
 const BASE =
-  "inline-flex items-center justify-center rounded-full font-semibold transition " +
-  "active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 " +
+  "inline-flex items-center justify-center whitespace-nowrap leading-none font-semibold transition " +
+  "active:scale-[0.98] disabled:cursor-not-allowed " +
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue";
 
 const VARIANTS = {
   yellow: "bg-brand-yellow text-white",
-  red: "bg-brand-red text-white",
-  soft: "bg-brand-red-soft text-white",
+  red: "bg-brand-red text-white disabled:opacity-30",
+  claim: "bg-brand-claim text-white",
+  claimed: "bg-brand-claimed text-white",
+  locked: "bg-brand-locked text-white",
   blue: "bg-brand-blue text-white",
-  muted: "bg-neutral-200 text-neutral-400",
-  outline: "border border-neutral-300 bg-white text-muted",
+  outline: "border border-muted bg-white text-muted",
 } as const;
 
 const SIZES = {
-  sm: "h-6 px-2.5 text-[11px]",
-  md: "h-9 px-5 text-sm",
-  lg: "h-12 w-full text-base",
+  sm: "h-[20px] w-[60px] rounded-full text-[8px]",
+  md: "h-[35px] rounded-full px-5 text-[16px]",
+  lg: "h-[48px] w-full rounded-full text-[20px]",
+  reset: "h-[27px] w-[85px] rounded-[12.5px] text-[20px]",
+  game: "h-[38px] w-[120px] rounded-[12.5px] text-[20px]",
 } as const;
 
 export type PillVariant = keyof typeof VARIANTS;
