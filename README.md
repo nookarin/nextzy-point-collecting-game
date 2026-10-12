@@ -198,4 +198,4 @@ Error ทุกตัวมีรูปแบบเดียวกัน: `{ "st
 
 | **PageSpeed Result** | https://pagespeed.web.dev/analysis/https-nextzy-point-collecting-game-vercel-app/m1jk6s0b73?form_factor=mobile |
 
-![alt text](frontend\src\assets\pagespeedresult.png)
+![PageSpeed Insights mobile results: Performance 99, Accessibility 96, Best Practices 100, SEO 100](frontend/src/assets/pagespeedresult.png)
