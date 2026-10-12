@@ -13,7 +13,7 @@
 | | |
 |---|---|
 | **Live app** | https://nextzy-point-collecting-game.vercel.app |
-| **API documentation (Apidog, with "Try it out")** | https://zrtxkfa0b3.apidog.io |
+| **API documentation (Apidog)** | https://zrtxkfa0b3.apidog.io |
 | **OpenAPI spec** | https://nextzy-point-collecting-game-backend.onrender.com/api/docs-json |
 | **Repository** | https://github.com/nookarin/nextzy-point-collecting-game |
 
